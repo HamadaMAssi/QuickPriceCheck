@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { read, utils } from "xlsx";
-import QrReader from "react-qr-reader";
+import QrScanner from "react-qr-scanner";
 import "./App.css";
 
 function App() {
@@ -21,9 +21,9 @@ function App() {
   }, []);
 
   const handleScan = (data) => {
-    if (data) {
-      if (!scannedCodes.includes(data)) {
-        setScannedCodes([...scannedCodes, data]);
+    if (data && data.text) {
+      if (!scannedCodes.includes(data.text)) {
+        setScannedCodes([...scannedCodes, data.text]);
       }
     }
   };
@@ -43,15 +43,20 @@ function App() {
     setTotalPrice(total);
   }, [scannedCodes, products]);
 
+  const previewStyle = {
+    height: 240,
+    width: 320,
+  };
+
   return (
     <div className="App">
-      <h1>QuickPriceCheck</h1>
+      <h1>Quick Price Check</h1>
       <div className="scanner">
-        <QrReader
+        <QrScanner
           delay={300}
+          style={previewStyle}
           onError={handleError}
           onScan={handleScan}
-          style={{ width: "100%" }}
         />
       </div>
       <div className="results">

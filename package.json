@@ -3,16 +3,20 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://HamadaMAssi.github.io/QuickPriceCheck",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "@babel/runtime": "^7.24.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-qr-reader": "^3.0.0-beta-1",
+    "react-qr-scanner": "^1.0.0-alpha.11",
     "xlsx": "^0.18.5"
   },
   "devDependencies": {
@@ -23,6 +27,7 @@
     "eslint-plugin-react": "^7.34.1",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.6",
+    "gh-pages": "^6.1.1",
     "vite": "^5.2.0"
   }
 }
